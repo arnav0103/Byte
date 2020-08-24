@@ -40,12 +40,14 @@ nav .logo {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 180%;
-
+    line-height: 60px;
 
 }
 nav.white .logo {
     float: left;
     color: black;
+    line-height: 40px;
+
 }
 
 nav ul{
@@ -95,8 +97,8 @@ nav.white .links:hover{
     width: 45%;
     height: 100%;
     padding-left: 6%;
-    padding-top: 10%;
-    padding-right: 3%;
+    padding-top: 16%;
+    padding-right: 5%;
     font-size: larger;
 }
 #right{
@@ -168,6 +170,7 @@ slider {
     height: 90vh;
     width: 100%;
     background-color: white;
+    padding: 8%;
 }   
 .form-group{
     margin-top: 1%;
@@ -182,4 +185,21 @@ slider {
 }
 .change:hover{
     background-color: black;
+}
+#footer{
+    width: 100%;
+    height: max-content;
+    padding: 5%;
+    background-color: black;
+    color: white;
+}
+#week{
+    display: inline-block;
+}
+#day{
+    margin: 2%;
+
+}
+a:hover{
+    text-decoration: none;
 }
