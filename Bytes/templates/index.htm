@@ -1,5 +1,35 @@
 {%extends 'base.htm'%}
 
 {%block content%}
+<script type="text/javascript">
+    $(window).on('scroll', function(){
+        if($(window).scrollTop()){
+            $('nav').addClass('white');
+        }
+        else{
+            $('nav').removeClass('white');
+        }
+    })
+</script>
+<div id="home">
+    
+    <div id="left" style="color: white;">
+        <h1>Metro Railway Network</h1>
+        <h4>-Sheet Rock Hills</h4>
+        <br><br><br>
+        <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis dolorem est delectus, magni aut excepturi harum animi at, architecto saepe ipsa dignissimos, numquam quo consequuntur placeat veritatis ducimus ipsum.</p>
 
+    </div>
+    <div id="right">
+        <slider>
+        <slide></slide>
+        <slide></slide>
+        <slide></slide>
+        <slide></slide>
+        </slider>
+    </div>
+</div>
+<div id="about">
+
+</div>
 {%endblock%}
