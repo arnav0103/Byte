@@ -21,7 +21,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 60px;
     padding: 10px 100px;
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.918);
@@ -31,7 +31,7 @@ nav {
 nav.white {
     background-color: white;
     box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509);
-    height: 60px;
+    height: 50px;
 }
 nav .logo {
     float: left;
@@ -40,13 +40,13 @@ nav .logo {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 180%;
-    line-height: 60px;
+    line-height: 30px;
 
 }
 nav.white .logo {
     float: left;
     color: black;
-    line-height: 40px;
+    line-height: 20px;
 
 }
 
@@ -59,7 +59,7 @@ nav ul{
     list-style-type: none;
 }
 nav ul li a{
-    line-height: 60px;
+    line-height: 40px;
     color: white;
     padding: 5px 20px;
     text-decoration: none;
@@ -69,7 +69,7 @@ nav ul li a{
 }
 .links{
     font-weight: 500;
-    font-size: 140%;
+    font-size: 110%;
     color: white;
 }
 nav.white ul li a{
@@ -167,10 +167,11 @@ slider {
     100% { left: 100%; width: 0%; }
    }
 #about{
-    height: 90vh;
+    
     width: 100%;
     background-color: white;
-    padding: 8%;
+    padding: 5%;
+    padding-top: 8%;
 }   
 .form-group{
     margin-top: 1%;
@@ -195,11 +196,59 @@ slider {
 }
 #week{
     display: inline-block;
+    
+    width: 100%;
 }
-#day{
+.day{
     margin: 2%;
-
+    display: inline-block;
+    /* box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.0509); */
+    width: 20vw;
+    padding: 4%;
+    transform-style: preserve-3d;
 }
 a:hover{
     text-decoration: none;
+}
+.face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transform: perspective(500px) rotateX(0deg);
+    transition: 1s ease-in-out;
+}
+.day .front{
+
+    background: transparent;
+    border: 2px solid #312d2d;
+    border-radius: 8%;
+    color: #000000;
+}
+.day:hover .front{
+    transform: perspective(500px) rotateX(180deg);   
+}
+.day .back{
+    background: #312d2d;
+    color: white;
+    border-radius: 12%;
+    transform: perspective(500px) rotateX(180deg);
+}
+.day:hover .back{
+    transform: perspective(500px) rotateX(360deg);
+}
+.face h1{
+    transform: perspective(500px) translateZ(50px);
+}
+.read{
+    color: white;
+}
+.read:hover{
+    color: white;
 }
