@@ -1,12 +1,10 @@
 {%extends 'base.htm'%}
 
 {%block content%}
-<div class="paging">
-<div class="container col trial" align ="center" style="font-size: larger; text-align: left; padding-left: 30%;">
+<div class="container col trial" align ="center">
   <br><br><br><br>
-  <h1>Register</h1>
-  <form  method="POST" enctype="multipart/form-data" style="text-align: left; ">
-  
+  <h1 align = "center">Register</h1>
+  <form  method="POST" enctype="multipart/form-data">
     {{form.hidden_tag()}}
     <div class="form-group">
       {{form.name.label}}{{form.name(class = 'form-control col-md-6' ,placeholder="Name" )}}
@@ -59,9 +57,7 @@
     <div class="form-group" style="margin-top: 3%;">
       {{form.submit(class ="btn btn-primary change")}}
     </div>
-  
   </form>
 
-</div>
 </div>
 {%endblock%}
