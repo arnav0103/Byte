@@ -2,7 +2,7 @@ from Bytes import app , db
 from Bytes.forms import RegistrationForm , LoginForm
 from Bytes.models import User
 from picture_handler import add_profile_pic
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect , flash
 from flask_login import current_user, login_required, login_user , logout_user
 
 @app.route('/', methods=['GET', 'POST'])
