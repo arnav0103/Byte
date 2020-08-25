@@ -12,7 +12,7 @@
     })
 </script>
 <div id="home">
-    
+
     <div id="left" style="color: white;">
         <h1>Metro Railway Network</h1>
         <h4>-Sheet Rock Hills</h4>
@@ -36,6 +36,7 @@
         </slider>
     </div>
 </div>
+{%if current_user.is_authenticated%}
 <div id="about">
 <center>
     <h1 style="font-size: 340%;">Train Schedules</h1>
@@ -45,7 +46,7 @@
             <h4>Monday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Monday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -53,7 +54,7 @@
             <h4>Tuesday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Tuesday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -61,7 +62,7 @@
             <h4>Wednesday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Wednesday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -69,7 +70,7 @@
             <h4>Thursday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Thursday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -77,7 +78,7 @@
             <h4>Friday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Friday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -85,7 +86,7 @@
             <h4>Saturday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Saturday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
         <div class="day">
@@ -93,12 +94,13 @@
             <h4>Sunday</h4>
             </div>
             <div class="face back">
-                <a class="read" href=""><h4>See Schedule</h4></a>
+                <a class="read" href="{{url_for('sched' , day = 'Sunday')}}"><h4>See Schedule</h4></a>
             </div>
         </div>
     </div>
 </center>
 </div>
+{%endif%}
 <div id="footer">
     Copyright &copy; Handy-Manny Corporation
 </div>

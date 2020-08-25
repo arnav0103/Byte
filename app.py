@@ -1,10 +1,11 @@
 from Bytes import app , db
 from Bytes.forms import RegistrationForm , LoginForm , UpdateUserForm
-from Bytes.models import User
+from Bytes.models import User , Time , Train
 from picture_handler import add_profile_pic
 from flask import render_template, request, url_for, redirect , flash
 from flask_login import current_user, login_required, login_user , logout_user
-
+import datetime
+from sqlalchemy import asc , desc
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.htm")
@@ -82,6 +83,19 @@ def account():
 
     profile_image = url_for('static', filename= current_user.profile_image)
     return render_template('account.htm', profile_image=profile_image, form=form, pic = pic)
+
+@app.route('/sched/<day>' , methods = ['GET' , 'POST' ])
+@login_required
+def sched(day):
+    time = Time.query.order_by(Time.start.asc())
+    m = []
+    for t in time:
+        print(t.start.strftime('%A'))
+        if t.start.strftime('%A') == day:
+            m.append(t)
+
+    return render_template('sched.htm' , m = m)
+
 
 ###########################################
 
