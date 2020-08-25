@@ -8,18 +8,6 @@ import datetime
 from sqlalchemy import asc , desc
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    time = Time.query.get(5)
-    time.start = datetime.datetime(2020, 8, 26, 16, 50)
-    time.end = datetime.datetime(2020, 8, 25, 17, 30)
-    time = Time.query.get(6)
-    time.start = datetime.datetime(2020, 8, 26, 17, 35)
-    time.end = datetime.datetime(2020, 8, 25, 18, 5)
-    time = Time.query.get(7)
-    time.start = datetime.datetime(2020, 8, 26, 18, 10)
-    time.end = datetime.datetime(2020, 8, 25, 18, 45)
-    time = Time.query.get(4)
-    db.session.delete(time)
-    db.session.commit()
     return render_template("index.htm")
 
 @app.route('/register' , methods = ['GET', 'POST'])
