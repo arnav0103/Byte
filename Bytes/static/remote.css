@@ -254,5 +254,14 @@ a:hover{
 }
 td,th{
     border: 1px solid black;
-    padding: 1%;
+    padding: 2%;
+}
+th{
+    color: white;
+    background-color: black;
+}
+table{
+    text-align: center;
+    font-size: larger;
+    margin-top: 7%;
 }

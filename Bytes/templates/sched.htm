@@ -1,21 +1,26 @@
 {%extends 'base.htm'%}
 
 {%block content%}
-
-<table>
-    <th>
+<style>
+    body{
+        overflow-y: hidden !important;
+    }
+</style>
+<center>
+<table class="animate__animated animate__fadeInUpBig">
+    <th style="border-right-color: rgb(212, 212, 212);">
         Departure From
     </th>
-    <th>
+    <th style="border-right-color: white;">
         Departure At:
     </th>
-    <th>
+    <th style="border-right-color: white;">
         Departure To:
     </th>
-    <th>
+    <th style="border-right-color: white;">
         Arrival At:
     </th>
-    <th>
+    <th style="border-left-color: white;">
         Number of Coaches remaining:
     </th>
     {%for t in m%}
@@ -28,4 +33,5 @@
     </tr>
     {%endfor%}
 </table>
+</center>
 {%endblock%}
