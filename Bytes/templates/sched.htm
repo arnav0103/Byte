@@ -23,6 +23,9 @@
     <th style="border-left-color: white;">
         Number of Coaches remaining:
     </th>
+    <th style="border-left-color: white;">
+      Book
+    </th>
     {%for t in m%}
     <tr>
         <td>{{t.start_place}}</td>
@@ -30,6 +33,9 @@
         <td>{{t.end_place}}</td>
         <td>{{t.end.strftime('%H-%M')}}</td>
         <td>{{t.seats}}</td>
+        <td>
+          <a class="btn btn-primary" href="{{url_for('ppl' , timeid = t.id)}}">Book</a>
+        </td>
     </tr>
     {%endfor%}
 </table>

@@ -52,9 +52,10 @@ class Time(db.Model):
     seats = db.Column(db.Integer)
 
     trainid = db.Column(db.Integer , db.ForeignKey('train.id'))
+    price = db.Column(db.Integer , nullable = True)
 
 
-    def __init__(self , start , end , start_place ,end_place, train , seats):
+    def __init__(self , start , end , start_place ,end_place, train , seats , price):
         self.start = start
         self.end = end
         self.start_place = start_place
@@ -62,3 +63,4 @@ class Time(db.Model):
         self.trainid = train
         self.seats = seats
         self.end_place = end_place
+        self.price = price

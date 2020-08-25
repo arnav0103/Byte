@@ -1,5 +1,5 @@
 from Bytes import app , db
-from Bytes.forms import RegistrationForm , LoginForm , UpdateUserForm
+from Bytes.forms import RegistrationForm , LoginForm , UpdateUserForm ,NoOfPeople
 from Bytes.models import User , Time , Train
 from picture_handler import add_profile_pic
 from flask import render_template, request, url_for, redirect , flash
@@ -96,7 +96,22 @@ def sched(day):
 
     return render_template('sched.htm' , m = m)
 
+@app.route('/letsbookyayyyyyyyy/<timeid>/<ppl>' , methods = ['GET' , 'POST'])
+@login_required
+def book(timeid):
+    time = Time.query.get_or_404(timeid)
+    time.seats = time.seats - ppl
+    current_user.timing.append(time)
+    db.session.commit()
+    return redirect('index')
 
+@app.route('/noofppl/<timeid>' , methods = ['GET' , 'POST'])
+@login_required
+def ppl(timeid):
+    form = NoOfPeople()
+    if form.validate_on_submit():
+        return redirect('stripe')
+    return render_template('ppl.htm' , form = form)
 ###########################################
 
 

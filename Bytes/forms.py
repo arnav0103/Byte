@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField ,SubmitField , TextAreaField , FileField , IntegerField , RadioField , DateField
+from wtforms import StringField, PasswordField ,SubmitField , TextAreaField , FileField , IntegerField
 from wtforms.validators import DataRequired, Email , EqualTo, Length
 from flask_wtf.file import FileField,FileAllowed
 from wtforms import ValidationError
@@ -44,3 +44,7 @@ class UpdateUserForm(FlaskForm):
         if field.data != current_user.username:
             if User.query.filter_by(username=field.data).first():
                 raise ValidationError('The username you chose has already been registered')
+
+class NoOfPeople(FlaskForm):
+    people = IntegerField('No. of Commuters' , validators=[DataRequired()])
+    submit = SubmitField('Continue')

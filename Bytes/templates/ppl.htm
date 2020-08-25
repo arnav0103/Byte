@@ -1,0 +1,17 @@
+{%extends 'base.htm'%}
+{%block content%}
+<form  method="POST">
+  {{form.hidden_tag()}}
+  <div class="form-group">
+    {{form.people.label}}{{form.people(class = 'form-control col-md-6' ,placeholder="No. Of people" )}}
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    {%if form.people.errors%}
+      {%for error in form.people.errors%}
+        <small class = 'text-danger'>{{error}}</small>
+      {%endfor%}
+    {%endif%}
+  <div class="form-group" style="margin-top: 3%;">
+    {{form.submit(class ="btn btn-primary change")}}
+  </div>
+</form>
+{%endblock%}
