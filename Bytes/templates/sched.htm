@@ -1,0 +1,31 @@
+{%extends 'base.htm'%}
+
+{%block content%}
+
+<table>
+    <th>
+        Departure From
+    </th>
+    <th>
+        Departure At:
+    </th>
+    <th>
+        Departure To:
+    </th>
+    <th>
+        Arrival At:
+    </th>
+    <th>
+        Number of Coaches remaining:
+    </th>
+    {%for t in m%}
+    <tr>
+        <td>{{t.start_place}}</td>
+        <td>{{t.start.strftime('%H-%M')}}</td>
+        <td>{{t.end_place}}</td>
+        <td>{{t.end.strftime('%H-%M')}}</td>
+        <td>{{t.seats}}</td>
+    </tr>
+    {%endfor%}
+</table>
+{%endblock%}
