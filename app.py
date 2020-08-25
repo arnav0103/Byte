@@ -1,5 +1,5 @@
 from Bytes import app , db
-from Bytes.forms import RegistrationForm , LoginForm
+from Bytes.forms import RegistrationForm , LoginForm , UpdateUserForm
 from Bytes.models import User
 from picture_handler import add_profile_pic
 from flask import render_template, request, url_for, redirect , flash
@@ -57,6 +57,31 @@ def login():
             error = 'No such login Pls create one'
 
     return render_template('login.htm', form=form, error = error)
+
+@app.route('/account',methods = ['GET','POST'])
+@login_required
+def account():
+    pic = current_user.profile_image
+    form = UpdateUserForm()
+    if form.validate_on_submit():
+        current_user.email = form.email.data
+        current_user.username = form.username.data
+
+
+        if form.picture.data is not None:
+            id = current_user.id
+            pic = add_profile_pic(form.picture.data,id)
+            current_user.profile_image = pic
+
+        flash('User Account Created')
+        db.session.commit()
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+
+    profile_image = url_for('static', filename= current_user.profile_image)
+    return render_template('account.htm', profile_image=profile_image, form=form, pic = pic)
 
 ###########################################
 
