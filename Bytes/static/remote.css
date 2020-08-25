@@ -88,11 +88,11 @@ nav.white .links:hover{
 
 }
 #home{
-    height: 100vh;
+    height: 105vh;
     display: flex;
 }
 #left{
-        
+    background-attachment: fixed !important;    
     background-color: rgb(16, 24, 31);
     width: 45%;
     height: 100%;
@@ -251,4 +251,8 @@ a:hover{
 }
 .read:hover{
     color: white;
+}
+td,th{
+    border: 1px solid black;
+    padding: 1%;
 }
