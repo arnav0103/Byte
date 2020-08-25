@@ -1,10 +1,18 @@
 {%extends "base.htm"%}
 {%block content%}
+<style>
+  body{
+    background-color: rgb(19, 19, 19);
+  }
+</style>
 <br><br><br><br><br><br>
-<div class="container jumbotron" id="account">
+
+<div class="container jumbotron" id="account" style="background-color: rgb(216, 216, 216);">
   <div align='center'>
-    <h1>Welcome To the Page for {{current_user.username}}</h1>
-    Your Profile Image: <br>
+  
+    <h1>Welcome To The Page For {{current_user.username}}</h1>
+    <b>
+    Your Profile Image:</b> <br>
     <a href="{{profile_image}}">
     <img align = 'center' src="{{profile_image}}" >
     </a>
@@ -48,7 +56,6 @@
   </div>
 
 </div>
-
 
 
 
