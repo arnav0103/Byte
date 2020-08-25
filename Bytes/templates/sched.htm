@@ -5,6 +5,13 @@
     body{
         overflow-y: hidden !important;
     }
+    .book{
+        background-color: rgb(32, 32, 32);
+        border-color: black;
+    }
+    .book :hover{
+        background-color: black;
+    }
 </style>
 <center>
 <table class="animate__animated animate__fadeInUpBig">
@@ -34,7 +41,7 @@
         <td>{{t.end.strftime('%H-%M')}}</td>
         <td>{{t.seats}}</td>
         <td>
-          <a class="btn btn-primary" href="{{url_for('ppl' , timeid = t.id)}}">Book</a>
+          <a class="btn btn-primary book" href="{{url_for('ppl' , timeid = t.id)}}">Book</a>
         </td>
     </tr>
     {%endfor%}
