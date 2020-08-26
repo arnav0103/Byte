@@ -120,10 +120,7 @@ def ppl(timeid):
     if form.validate_on_submit():
         return redirect('book_ticket', people=form.people.data, timeid=timeid)
     return render_template('ppl.htm' , form = form)
-###########################################
 
-
-##############################################
 
 ################ STRIPE ########################
 
@@ -152,9 +149,28 @@ def payment(people, timeid):
 
     return redirect(url_for('book'))
 
-
 ##############################################
 
+###########################################
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('Error/404.html'), 404
+
+
+@app.errorhandler(403)
+def action_forbidden(e):
+    return render_template('Error/403.html'), 403
+
+@app.errorhandler(410)
+def page_deleted(e):
+    return render_template('Error/410.html'), 410
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('Error/500.html'), 500
+
+##############################################
 
 if __name__ == '__main__':
     app.run(debug=True)
