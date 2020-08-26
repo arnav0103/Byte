@@ -22,10 +22,13 @@
         with minimum effort from your side.<br>
         Get started now.
         </p> <br><br>
+        {%if current_user.is_authenticated%}
         <a href="#about" style="font-size: larger; padding: 1.2%; border-radius: 10%; color: white; 
         background: transparent; border: 2px solid white;">
         Go<i class="fas fa-caret-down" style="color: white; font-size: 24px; margin-left: 5%;"></i>
         </a>
+        {%endif%}
+
     </div>
     <div id="right">
         <slider>
@@ -101,6 +104,11 @@
 </center>
 </div>
 {%endif%}
+<div id="video">
+    <center>
+    <iframe width="860" height="515" src="https://www.youtube.com/embed/V9-GXFOAfck" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+</div>
 <div id="footer">
     Copyright &copy; Handy-Manny Corporation
 </div>
