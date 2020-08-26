@@ -98,43 +98,50 @@ def sched(day):
     time = Time.query.order_by(Time.start.asc())
     m = []
     for t in time:
-        print(t.start.strftime('%A'))
         if t.start.strftime('%A') == day:
             m.append(t)
 
     return render_template('sched.htm' , m = m)
 
-@app.route('/letsbookyayyyyyyyy/<timeid>/<ppl>' , methods = ['GET' , 'POST'])
+@app.route('/letsbookyayyyyyyyy/<timeid>/<ppl>' , methods = ['GET','POST'])
 @login_required
-def book(timeid):
+def book(timeid,ppl):
     time = Time.query.get_or_404(timeid)
-    time.seats = time.seats - ppl
+    time.seats = time.seats - int(ppl)
     current_user.timing.append(time)
     db.session.commit()
-    return redirect('index')
+    return redirect(url_for('index'))
 
 @app.route('/noofppl/<timeid>' , methods = ['GET' , 'POST'])
 @login_required
 def ppl(timeid):
     form = NoOfPeople()
+    time = Time.query.get(timeid)
     if form.validate_on_submit():
-        return redirect('book_ticket', people=form.people.data, timeid=timeid)
+        people = form.people.data
+        if people > time.seats:
+            abort(403)
+        return redirect(url_for('book_ticket', people=people, timeid = timeid))
     return render_template('ppl.htm' , form = form)
 
 
 ################ STRIPE ########################
 
-@app.route('/book-ticket/<people>/<timeid>')
+@app.route('/book-ticket/<people>/<timeid>' , methods = ['GET' , 'POST'])
 @login_required
 def book_ticket(people, timeid):
     time = Time.query.get_or_404(timeid)
-    return render_template('reciept.html', public_key=public_key, people=people, timeid=timeid)
+    print(timeid)
+    price = time.price *int(people)
+    print(price)
+    print(people)
+    return render_template('reciept.html', public_key=public_key, people=people, time=time, timeid = timeid , price  =price)
 
 
 @app.route('/payment/<people>/<timeid>', methods=['POST'])
 @login_required
 def payment(people, timeid):
-
+    print(timeid)
     # CUSTOMER INFORMATION
     customer = stripe.Customer.create(email=request.form['stripeEmail'],
                                       source=request.form['stripeToken'])
@@ -147,7 +154,7 @@ def payment(people, timeid):
         description='Booking'
     )
 
-    return redirect(url_for('book'))
+    return redirect(url_for('book' , ppl = people , timeid = timeid))
 
 ##############################################
 

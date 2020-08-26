@@ -41,7 +41,11 @@
         <td>{{t.end.strftime('%H-%M')}}</td>
         <td>{{t.seats}}</td>
         <td>
+          {%if t.seats == 0%}
+            <h3>Booked</h3>
+          {%else%}
           <a class="btn btn-primary book" href="{{url_for('ppl' , timeid = t.id)}}">Book</a>
+          {%endif%}
         </td>
     </tr>
     {%endfor%}
