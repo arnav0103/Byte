@@ -97,11 +97,16 @@ def account():
 def sched(day):
     time = Time.query.order_by(Time.start.asc())
     m = []
+    x = datetime.datetime.now()
+    week = {'Monday' : 1,'Tuesday' : 2,'Wednesday' : 3,'Thursday' : 4,'Friday' : 5,'Saturday' : 6,'Sunday' : 7}
     for t in time:
+        if week[t.start.strftime('%A')] <= week[x.strftime('%A')]:
+            t.seats = 100
+            db.session.commit()
         if t.start.strftime('%A') == day:
             m.append(t)
-    x = datetime.datetime.now()
-    return render_template('sched.htm' , m = m , x = x)
+
+    return render_template('sched.htm' , m = m , x = x , week = week)
 
 @app.route('/letsbookyayyyyyyyy/<timeid>/<ppl>' , methods = ['GET','POST'])
 @login_required

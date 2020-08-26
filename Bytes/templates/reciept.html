@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                         <p>
-                            <em>Date: 1st December, 3000</em>
+                            <em>{{time.start.strftime('%A')}}</em>
                         </p>
                         <p>
                             <em>Receipt #: 34522677W</em>
@@ -48,14 +48,18 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Product</th>
+                                <th>Train</th>
+                                <th>Destination</th>
+                                <th>From</th>
                                 <th>People</th>
                                 <th class="text-center">Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="col-md-9"><em>Metro</em></h4></td>
+                                <td class="col-md-9"><em>{{time.train.name}}</em></h4></td>
+                                <td class="col-md-9">{{time.end_place}}</td>
+                                <td class="col-md-9">{{time.start_place}}</td>
                                 <td class="col-md-9">{{people}}</td>
                                 <td class="col-md-1 text-center">{{price}}$</td>
                             </tr>
