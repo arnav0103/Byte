@@ -100,8 +100,8 @@ def sched(day):
     for t in time:
         if t.start.strftime('%A') == day:
             m.append(t)
-
-    return render_template('sched.htm' , m = m)
+    x = datetime.datetime.now()
+    return render_template('sched.htm' , m = m , x = x)
 
 @app.route('/letsbookyayyyyyyyy/<timeid>/<ppl>' , methods = ['GET','POST'])
 @login_required
