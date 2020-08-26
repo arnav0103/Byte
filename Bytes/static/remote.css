@@ -265,3 +265,7 @@ table{
     font-size: larger;
     margin-top: 7%;
 }
+#video{
+    background-color: whitesmoke;
+    padding: 8%;
+}

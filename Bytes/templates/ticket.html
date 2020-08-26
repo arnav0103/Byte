@@ -8,20 +8,18 @@
 </head>
 <style>
     .ticket{
-    width: 70vw;
+    width: 65vw;
     height: 50vh;
     color: black;
-    /* background-image: url(); */
-    background-size:cover;
-    opacity: 0.8;
-    background-color: whitesmoke;
+    
+    /* background-color: whitesmoke; */
     padding: 0;
 }
 #details{
-    opacity: 1;
-    z-index: 5;
-    
-    
+    background-image: url(stamp.png);
+    background-size:contain;
+    opacity: 0.3;
+    z-index: 22;
     padding: 4%;
 }
 .gaps{
@@ -31,20 +29,29 @@
 }
 </style>
 <body>
-    <center>
+    
     <div class="ticket">
         <div class="gaps">
 
         </div>
         <div id="details">
-            <h6>Name:</h6>
-            <h6>Number of seats booked:</h6>
-            <h6>Name of Train:</h6>
-            <h6>Starting Place</h6>
-            <h6>Destination:</h6>
-            <h6></h6>
+            <div style="opacity: 5; color: black;">
+            <h3>Name:</h3>
+            <h3>Number of seats booked:</h3>
+            <h3>Name of Train:</h3>
+            <h3>Starting Place</h3>
+            <h3>Destination:</h3>
+            
+            </div>
+            <div>
+                <h3></h3>
+                <h3></h3>
+                <h3></h3>
+                <h3></h3>
+                <h3></h3>
+            </div>
         </div>
     </div>
-</center>
+
 </body>
 </html>
