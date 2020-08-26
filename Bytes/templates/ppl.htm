@@ -1,9 +1,9 @@
 {%extends 'base.htm'%}
 {%block content%}
-<form  method="POST">
+<form  method="POST" style="margin: 8%;">
   {{form.hidden_tag()}}
   <div class="form-group">
-    {{form.people.label}}{{form.people(class = 'form-control col-md-6' ,placeholder="No. Of people" )}}
+    {{form.people.label}}{{form.people(class = 'form-control col-md-4' ,placeholder="No. Of people" )}}
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     {%if form.people.errors%}
       {%for error in form.people.errors%}
