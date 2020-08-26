@@ -15,6 +15,9 @@
 </style>
 <center>
 <table class="animate__animated animate__fadeInUpBig">
+  <th style="border-right-color: white;">
+      Train:
+  </th>
     <th style="border-right-color: rgb(212, 212, 212);">
         Departure From
     </th>
@@ -35,16 +38,17 @@
     </th>
     {%for t in m%}
     <tr>
+        <td>{{t.train.name}}</td>
         <td>{{t.start_place}}</td>
-        <td>{{t.start.strftime('%H-%M')}}</td>
+        <td>{{t.start.strftime('%H:%M')}}</td>
         <td>{{t.end_place}}</td>
-        <td>{{t.end.strftime('%H-%M')}}</td>
+        <td>{{t.end.strftime('%H:%M')}}</td>
         <td>{{t.seats}}</td>
         <td>
           {%if t.seats == 0%}
             <h3>Booked</h3>
-          {%elif t.start < x%}
-            <h3>Has moved</h3>
+          {%elif week[t.start.strftime('%A')] <= week[x.strftime('%A')]%}
+            <a class="btn btn-primary book" href="{{url_for('ppl' , timeid = t.id)}}">Book For next week</a>
           {%else%}
           <a class="btn btn-primary book" href="{{url_for('ppl' , timeid = t.id)}}">Book</a>
           {%endif%}
