@@ -6,6 +6,14 @@ from flask import render_template, request, url_for, redirect , flash
 from flask_login import current_user, login_required, login_user , logout_user
 import datetime
 from sqlalchemy import asc , desc
+import stripe
+
+
+public_key = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
+
+stripe.api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.htm")
@@ -110,29 +118,39 @@ def book(timeid):
 def ppl(timeid):
     form = NoOfPeople()
     if form.validate_on_submit():
-        return redirect('stripe')
+        return redirect('book_ticket', people=form.people.data, timeid=timeid)
     return render_template('ppl.htm' , form = form)
 ###########################################
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('Error/404.html'), 404
+##############################################
+
+################ STRIPE ########################
+
+@app.route('/book-ticket/<people>/<timeid>')
+@login_required
+def book_ticket(people, timeid):
+    return render_template('reciept.html', public_key=public_key, people=people, timeid=timeid)
 
 
-@app.errorhandler(403)
-def action_forbidden(e):
-    return render_template('Error/403.html'), 403
+@app.route('/payment/<people>/<timeid>', methods=['POST'])
+@login_required
+def payment(people, timeid):
 
+    # CUSTOMER INFORMATION
+    customer = stripe.Customer.create(email=request.form['stripeEmail'],
+                                      source=request.form['stripeToken'])
 
-@app.errorhandler(410)
-def page_deleted(e):
-    return render_template('Error/410.html'), 410
+    # CHARGE/PAYMENT INFORMATION
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=1999,
+        currency='usd',
+        description='DonatiBookingon'
+    )
 
+    return redirect(url_for('book'))
 
-@app.errorhandler(500)
-def internal_server_error(e):
-    return render_template('Error/500.html'), 500
 
 ##############################################
 
