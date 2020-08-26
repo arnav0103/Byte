@@ -130,6 +130,7 @@ def ppl(timeid):
 @app.route('/book-ticket/<people>/<timeid>')
 @login_required
 def book_ticket(people, timeid):
+    time = Time.query.get_or_404(timeid)
     return render_template('reciept.html', public_key=public_key, people=people, timeid=timeid)
 
 
@@ -146,7 +147,7 @@ def payment(people, timeid):
         customer=customer.id,
         amount=1999,
         currency='usd',
-        description='DonatiBookingon'
+        description='Booking'
     )
 
     return redirect(url_for('book'))

@@ -14,7 +14,7 @@
     <title>reciept</title>
   </head>
   <body>
-
+    <br><br>    <br><br>    <br><br>
     <div class="container">
         <div class="row">
             <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
@@ -48,67 +48,28 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>#</th>
                                 <th class="text-center">Price</th>
-                                <th class="text-center">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="col-md-9"><em>Metro</em></h4></td>
-                                <td class="col-md-1" style="text-align: center"> 2 </td>
-                                <td class="col-md-1 text-center">$13</td>
-                                <td class="col-md-1 text-center">$26</td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-9"><em>Metro</em></h4></td>
-                                <td class="col-md-1" style="text-align: center"> 1 </td>
-                                <td class="col-md-1 text-center">$8</td>
-                                <td class="col-md-1 text-center">$8</td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-9"><em>Metro</em></h4></td>
-                                <td class="col-md-1" style="text-align: center"> 3 </td>
-                                <td class="col-md-1 text-center">$16</td>
-                                <td class="col-md-1 text-center">$48</td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td class="text-right">
-                                <p>
-                                    <strong>Subtotal: </strong>
-                                </p>
-                                <p>
-                                    <strong>Tax: </strong>
-                                </p></td>
-                                <td class="text-center">
-                                <p>
-                                    <strong>$6.94</strong>
-                                </p>
-                                <p>
-                                    <strong>$6.94</strong>
-                                </p></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                                <td class="text-center text-danger"><h4><strong>$31.53</strong></h4></td>
+                                <td class="col-md-1 text-center">{{timeid.price}}</td>
                             </tr>
                         </tbody>
                     </table>
                     <form action="{{url_for('payment', people=people, timeid=timeid)}}" method="POST">
+                        <center>
                         <script
                           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                           data-key={{public_key}}
-                          data-amount="1999"
-                          data-name="Puppy Adoption"
-                          data-description="Donation"
-                          data-image="https://images.unsplash.com/photo-1514984879728-be0aff75a6e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35dcb9bb6f3e097541dd732a99c44766&auto=format&fit=crop&w=1576&q=80"
+                          data-amount="{{timeid.price}}"
+                          data-name="Metro Ticket"
+                          data-description="Booking"
                           data-locale="auto"
                           data-zip-code="true">
                         </script>
+                        </center>
                       </form>
                 </div>
             </div>
