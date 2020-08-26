@@ -2,7 +2,7 @@ from Bytes import app , db
 from Bytes.forms import RegistrationForm , LoginForm , UpdateUserForm ,NoOfPeople
 from Bytes.models import User , Time , Train
 from picture_handler import add_profile_pic
-from flask import render_template, request, url_for, redirect , flash
+from flask import render_template, request, url_for, redirect , flash , abort
 from flask_login import current_user, login_required, login_user , logout_user
 import datetime
 from sqlalchemy import asc , desc
@@ -100,7 +100,7 @@ def sched(day):
     x = datetime.datetime.now()
     week = {'Monday' : 1,'Tuesday' : 2,'Wednesday' : 3,'Thursday' : 4,'Friday' : 5,'Saturday' : 6,'Sunday' : 7}
     for t in time:
-        if week[t.start.strftime('%A')] <= week[x.strftime('%A')]:
+        if week[t.start.strftime('%A')] == week[x.strftime('%A')]:
             t.seats = 100
             db.session.commit()
         if t.start.strftime('%A') == day:
@@ -115,7 +115,7 @@ def book(timeid,ppl):
     time.seats = time.seats - int(ppl)
     current_user.timing.append(time)
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('ticket' , people = ppl , timeid = timeid , time = time))
 
 @app.route('/noofppl/<timeid>' , methods = ['GET' , 'POST'])
 @login_required
@@ -161,6 +161,14 @@ def payment(people, timeid):
 
     return redirect(url_for('book' , ppl = people , timeid = timeid))
 
+
+@app.route('/<time>/<timeid>/<people>/ticket' , methods = ['GET' , 'POST'])
+@login_required
+def ticket(time,timeid,people):
+    t = Time.query.get(timeid)
+    if current_user not in t.users:
+        abort(403)
+    return render_template('ticket.htm' , people = people , t = t)
 ##############################################
 
 ###########################################

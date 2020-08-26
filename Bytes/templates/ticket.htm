@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket</title>
-
-</head>
+{%extends 'base.htm'%}
+{%block head%}
 <style>
-    
+
     .ticket{
     width: 80vw;
     height: max-content;
@@ -33,10 +27,10 @@
     /* width: 100%; */
 }
 </style>
-<body>
-    
+{%endblock%}
+{%block content%}
     <div class="ticket">
-        
+
         <div class="gaps">
             <h1 style="color: white;">Handy-Manny Metro</h1>
         </div>
@@ -48,22 +42,21 @@
             <h3>Name of Train:</h3>
             <h3>Starting Place</h3>
             <h3>Destination:</h3>
-            
+
             </div>
             <div style="margin-left: 20%; text-align: right; ">
-                <h3>arnav</h3>
-                <h3>3</h3>
-                <h3>some</h3>
-                <h3>bleh</h3>
-                <h3>dddd</h3>
-                
+                <h3>{{current_user.name}}</h3>
+                <h3>{{people}}</h3>
+                <h3>{{t.train.name}}</h3>
+                <h3>{{t.start_place}}</h3>
+                <h3>{{t.end_place}}</h3>
+
             </div>
             <div>
-                <img style="width: 70%;" src="train.png" alt="can't load img">
+                <img style="width: 70%;" src="{{url_for('static' , filename = 'stamp.png')}}" alt="can't load img">
             </div>
         </div>
     </center>
     </div>
 
-</body>
-</html>
+{%endblock%}
