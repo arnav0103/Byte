@@ -5,6 +5,7 @@
     .ticket{
     width: 80vw;
     height: max-content;
+    border: 1px solid black;
     color: black;
     /* background-color: whitesmoke; */
     padding: 0;
@@ -44,13 +45,13 @@
             <h3>Destination:</h3>
 
             </div>
-            <div style="margin-left: 20%; text-align: right; ">
+            <div style="margin-left: 10%; text-align: right; width: 35vw; ">
                 <h3>{{current_user.name}}</h3>
                 <h3>{{people}}</h3>
                 <h3>{{t.train.name}}</h3>
                 <h3>{{t.start_place}}</h3>
                 <h3>{{t.end_place}}</h3>
-                <a href="{{url_for('index')}}" class = 'btn btn-primary'>Go Back</a>
+                
             </div>
             <div>
                 <img style="width: 70%;" src="{{url_for('static' , filename = 'stamp.png')}}" alt="can't load img">
@@ -58,5 +59,7 @@
         </div>
     </center>
     </div>
-
+    <center>
+    <a href="{{url_for('index')}}" class = 'btn btn-primary change'>Go Back</a>
+</center>
 {%endblock%}
